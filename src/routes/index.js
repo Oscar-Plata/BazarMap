@@ -201,19 +201,16 @@ router.get("/organizar", async (req, res) => {
 
 router.get("/borrarDueno/:id", (req, res) => {
   db.ref("duenos/" + req.params.id).remove();
-  console.log(req.params.id);
   res.redirect("/agregar-duenos");
 });
 
 router.get("/borrarLocal/:id", (req, res) => {
   db.ref("locales/" + req.params.id).remove();
-  console.log(req.params.id);
   res.redirect("/agregar-locales");
 });
 
 router.get("/borrarEvento/:id", (req, res) => {
   db.ref("eventos/" + req.params.id).remove();
-  console.log(req.params.id);
   res.redirect("/agregar-eventos");
 });
 
