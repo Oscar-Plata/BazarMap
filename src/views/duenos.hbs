@@ -1,0 +1,50 @@
+<div class="col-md-10 offset-md-1">
+    <div class="card">
+        <div class="card-header">
+            <div class="row d-flex justify-content-between aling-items-center">
+                <h1>Dueños vendedores</h1>
+                <button type="button" class="btn btn-info mb-2" onclick="window.location.href='/'">Regresar</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5>Registrar nuevo dueño</h5>
+            <form action="/add-dueno" method="post">
+
+                <div class="form-group">
+                    <label for="nombreDueno" class="form-label mt-2">Nombre</label>
+                    <input type="text" name="nombreDueno" id="nombreDueno" class="form-control" required />
+
+                    <label for="emailDueno" class="form-label mt-2">Email</label>
+                    <input type="email" class="form-control" name="emailDueno" id="emailDueno"
+                        aria-describedby="emailHelp" required>
+
+                    <label for="telefonoDueno" class="form-label mt-2">Telefono</label>
+                    <input type="tel" name="telefonoDueno" id="telefonoDueno" class="form-control" maxlength="13"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" / required>
+
+                </div>
+
+                <button type="submit" class="btn btn-info btn-block mt-3">Agregar Dueño</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <h5>Dueños registrados</h5>
+            {{#if duenos}}
+            <ul>
+                {{#each duenos}}
+                <li class="list-group-item d-flex justify-content-between aling-items-center">
+                    {{nombre}} /
+                    {{email}} /
+                    {{telefono}}
+                    <a href="/borrarDueno/{{@key}}" class="btn btn-danger">
+                        Borrar
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <p>No hay dueños registrados.</p>
+            {{/if}}
+        </div>
+    </div>
+</div>

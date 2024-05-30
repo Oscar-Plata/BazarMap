@@ -1,0 +1,53 @@
+<div class="col-md-10 offset-md-1">
+    <div class="card">
+        <div class="card-header">
+            <div class="row d-flex justify-content-between aling-items-center">
+                <h1>Eventos del bazar</h1>
+                <button type="button" class="btn btn-info mb-2" onclick="window.location.href='/'">Regresar</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5>Registrar nuevo evento</h5>
+            <form action="/add-evento" method="post">
+
+                <div class="form-group">
+                    <label for="nombreLocal" class="form-label mt-2">Nombre del evento</label>
+                    <input type="text" name="nombreEvento" id="nombreEvento" class="form-control" required />
+
+                    <label for="descEvento" class="form-label mt-2">Descripcion del evento</label>
+                    <textarea class="form-control" name="descEvento" id="descEvento" rows="3" required></textarea>
+
+                </div>
+
+                <div class="input-group mb-3">
+                    <label for="costoEvento" class="form-label mr-5 mt-2">Costo del evento</label>
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                        name="costoEvento" id="costoEvento" required>
+                    <span class="input-group-text">.00</span>
+                </div>
+
+                <button type="submit" class="btn btn-warning btn-block mt-3">Agregar Evento</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <h5>Eventos registrados</h5>
+            {{#if eventos}}
+            <ul>
+                {{#each eventos}}
+                <li class="list-group-item d-flex justify-content-between aling-items-center">
+                    {{nombre}} /
+                    {{descripcion}} /
+                    $ {{costo}}
+                    <a href="/borrarEvento/{{@key}}" class="btn btn-danger">
+                        Borrar
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <p>No hay eventos registrados.</p>
+            {{/if}}
+        </div>
+    </div>
+</div>

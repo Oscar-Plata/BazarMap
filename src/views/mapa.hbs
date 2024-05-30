@@ -1,0 +1,46 @@
+<div class="col-md-10 offset-md-1">
+    <div class="card">
+        <div class="card-header">
+            <div class="row d-flex justify-content-between align-items-center">
+                <h1>Mapa del Bazar</h1>
+                <button type="button" class="btn btn-info mb-2" onclick="window.location.href='/'">Regresar</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <h2>Información del Evento</h2>
+            <h3>{{evento.nombre}}</h3>
+            <p>{{evento.descripcion}}</p>
+            <p>Costo: ${{evento.costo}} Pesos</p>
+
+            <h2>Información de Zonas</h2>
+            <table class="table table-striped ">
+                <thead>
+                    <tr class="table-success">
+                        <th>Zona</th>
+                        <th>Información del Local</th>
+                        <th>Información del Dueño</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each mapa}}
+                    <tr>
+                        <td>{{label}}</td>
+                        <td>
+                            <p>Nombre: {{local.nombre}}</p>
+                            <p>Productos: {{local.productos}}</p>
+                            <p>Viernes: {{local.viernes}}</p>
+                            <p>Sábado: {{local.sabado}}</p>
+                            <p>Domingo: {{local.domingo}}</p>
+                        </td>
+                        <td>
+                            <p>Nombre: {{dueno.nombre}}</p>
+                            <p>Email: {{dueno.email}}</p>
+                            <p>Teléfono: {{dueno.telefono}}</p>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

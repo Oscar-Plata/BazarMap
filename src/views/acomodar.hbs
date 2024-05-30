@@ -1,0 +1,62 @@
+<div class="col-md-10 offset-md-1">
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row d-flex justify-content-between aling-items-center">
+                <h1>Organizar Bazar</h1>
+                <button type="button" class="btn btn-info mb-2" onclick="window.location.href='/'">Regresar</button>
+            </div>
+        </div>
+
+
+        <div class="card-body">
+            <h4>Asignar Evento</h4>
+            <form class="form-group" action="/guardarMapa" method="POST">
+                <select class="form-control mr-3" id="eventosSel" name="eventosSel">
+                    <option value="00">Sin evento</option>
+                    {{#if eventos}}
+                    {{#each eventos}}
+                    <option value="{{@key}}">{{nombre}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select>
+
+
+                {{#each zonas}}
+                <div class="form-group mt-4">
+                    <h4>Acomodar Locales</h4>
+                    <h5>{{label}}</h5>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text text-success">Local</span>
+                        <select class="form-control mr-3" id="local{{id}}" name="{{id}}.local">
+                            <option value="00">Sin local</option>
+                            {{#if ../locales}}
+                            {{#each ../locales}}
+                            <option value="{{@key}}">{{nombre}}</option>
+                            {{/each}}
+                            {{/if}}
+
+                        </select>
+                        <span class="input-group-text text-primary">Dueño</span>
+                        <select class="form-control" id="dueno{{id}}" name="{{id}}.dueno">
+                            <option value="00">Sin Dueño</option>
+                            {{#each ../duenos}}
+                            <option value="{{@key}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                {{/each}}
+
+
+                <button type="submit" class="btn btn-success btn-block mt-3">Guardar</button>
+            </form>
+            </body>
+        </div>
+
+
+        <div class="card-footer">
+
+        </div>
+    </div>
+</div>
